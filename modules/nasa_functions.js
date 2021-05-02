@@ -8,7 +8,9 @@ class nasa_functions {
     }
 
     getImageFromURL = (url, message) => {
+        console.log("ok");
         https.get(url, res =>{
+            console.log("ok2");
             message.edit("Réponse de l'api, traitement de l'image...").catch();
             if(res.statusCode === 200 && res.headers['content-type'] === "image/png"){
                 let img = new Stream();
@@ -23,9 +25,11 @@ class nasa_functions {
                     fs.writeFileSync(fileName, img.read());*/
                 });
             }else{
+                console.log("ok4");
                 message.edit("Aucune image trouvé, veuillez indiquer des coordonnées valides !").catch();
             }
         }).on('error', err =>{
+            console.log("ok3");
             console.log("Erreur lors de la récupération d'une image: " + err);
             message.edit("Error lors de la requêtes http, veuillez contacter un administrateur.").catch();
         });
