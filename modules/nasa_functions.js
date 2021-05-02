@@ -9,8 +9,8 @@ class nasa_functions {
 
     getImageFromURL = (url, message) => {
         https.get(url, res =>{
-            message.edit("Réponse de l'api, traitement de l'image...").then();
             if(res.statusCode === 200 && res.headers['content-type'] === "image/png"){
+                message.edit("Réponse de l'api, traitement de l'image...").then();
                 let img = new Stream();
 
                 res.on('data', chunk => {
