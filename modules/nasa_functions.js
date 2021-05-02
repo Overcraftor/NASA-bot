@@ -1,6 +1,6 @@
 const https = require("https");
-const fs = require("fs");
 const Stream = require("stream").Transform;
+const Discord = require("discord.js");
 
 class nasa_functions {
     constructor(api_key) {
@@ -19,8 +19,7 @@ class nasa_functions {
 
                 res.on('end', () =>{
                     message.edit("Image trouvé.").then();
-                    /*let fileName = __dirname + "/test.jpg";
-                    fs.writeFileSync(fileName, img.read());*/
+                    message.channel.send(new Discord.MessageAttachment(img)).then();
                 });
             }else{
                 message.edit("Aucune image trouvé, veuillez indiquer des coordonnées valides !").then();
