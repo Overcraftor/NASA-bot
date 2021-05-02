@@ -1,7 +1,7 @@
 module.exports = {
     name: "satelliteImage",
     category: "N.A.S.A.",
-    aliases: ["satImage", "satimg"],
+    aliases: ["satimage", "satimg"],
     description: "Permet d'obtenir une photo satellite selon des coordonnées précises.",
     usage: "satelliteImage <latitude> <longitude> [dimensions (default: 0.15)]",
     deleteMessage: false,
@@ -14,14 +14,11 @@ module.exports = {
             ));
         }
 
-        message.reply("Recherche de l'image via l'API de la NASA...").then(async msg =>{
+        message.reply("Recherche de l'image via l'API de la NASA...").then(msg =>{
             const url = client.nasa.getSatellitURL(args[0], args[1], args[2] || "0.15");
             console.log(url);
 
-            const img = await client.nasa.getImageFromURL(url, msg);
-            if(img !== "err" && img !== undefined){
-                msg.edit("Image trouvé.").then();
-            }
+            client.nasa.getImageFromURL(url, msg);
         });
     }
 }

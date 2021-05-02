@@ -18,7 +18,7 @@ class nasa_functions {
                 });
 
                 res.on('end', () =>{
-                    return img;
+                    message.edit("Image trouvé.").then();
                     /*let fileName = __dirname + "/test.jpg";
                     fs.writeFileSync(fileName, img.read());*/
                 });
