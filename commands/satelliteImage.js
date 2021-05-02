@@ -9,7 +9,9 @@ module.exports = {
 
     execute(message, args, client) {
         if(args.length < 2){
-            return client.newEmbed("error", message.author, "Veuillez indiquer une latitude et une longitude !", "Vous pouvez récupérer la longitude et la latitude d'un lieu via google maps");
+            return message.channel.send(
+                client.newEmbed("error", message.author, "Veuillez indiquer une latitude et une longitude !", "Vous pouvez récupérer la longitude et la latitude d'un lieu via google maps"
+            ));
         }
 
         message.reply("Recherche de l'image via l'API de la NASA...");
