@@ -20,7 +20,7 @@ class nasa_functions {
                 res.on('end', () =>{
                     message.edit("Image trouvé.").then();
                     //message.channel.send(new Discord.MessageAttachment(data)).then().catch(err => console.log("Error found: "+ err));
-                    console.log(res.headers['content-type']);
+                    console.log(res.headers);
                     //message.channel.send("Image satellite:", {file:data.hdurl});
                 });
             }else{
