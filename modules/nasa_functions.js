@@ -32,7 +32,7 @@ class nasa_functions {
     }
 
     getSatellitURL = (lat, long, dim) => {
-        return `https://api.nasa.gov/planetary/earth/imagery?lat=${lat}&lon=${long}&dim=${dim}&api_key=3teH85nmdRdzB8472pqirtsjweuwP2j669B1bdhv`;
+        return `https://api.nasa.gov/planetary/earth/imagery?lat=${lat}&lon=${long}&dim=${dim}&date=2014-02-01&api_key=3teH85nmdRdzB8472pqirtsjweuwP2j669B1bdhv`;
     }
 
     /*getSatellitURL = (lat, long, dim, date) => {
