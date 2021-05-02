@@ -19,7 +19,7 @@ class nasa_functions {
 
                 res.on('end', () =>{
                     message.edit("Image trouvé.").then();
-                    message.channel.send(new Discord.MessageAttachment(data.read(), 'nasabot.jpg').then().catch(err => console.log("Error found: "+ err));
+                    message.channel.send(new Discord.MessageAttachment(data.read(), 'nasabot.jpg')).then().catch(err => console.log("Error found: "+ err));
                     //const buffer = Buffer.from(data);
                     //const attachment = new MessageAttachment(buffer, 'file.txt')
                 });
