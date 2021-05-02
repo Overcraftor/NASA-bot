@@ -1,4 +1,7 @@
 const Discord = require("discord.js");
+const https = require("https");
+const fs = require("fs");
+const Stream = require("stream").Transform;
 // const mysql = require("mysql");
 
 module.exports = client =>{
@@ -41,6 +44,29 @@ module.exports = client =>{
 
     client.getCommand = (cmdName) => {
         return client.commands.get(cmdName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(cmdName));
+    }
+
+    client.getImageFromURL = (url) => {
+        https.get(url, res =>{
+            console.log(res.headers['content-type']);
+            if(res.statusCode === 200 && res.headers['content-type'] === "image/png"){
+                let img = new Stream();
+
+                res.on('data', chunk => {
+                    img.push(chunk);
+                });
+
+                res.on('end', () =>{
+                    return img;
+                    /*let fileName = __dirname + "/test.jpg";
+                    fs.writeFileSync(fileName, img.read());*/
+                });
+            }else{
+                console.log("This is not a valid image");
+            }
+        }).on('error', err =>{
+            console.log("Error: " + err.message);
+        });
     }
 
     /*client.initDataConnection = () =>{
