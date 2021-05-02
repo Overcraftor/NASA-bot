@@ -19,7 +19,7 @@ class nasa_functions {
 
                 res.on('end', () =>{
                     message.edit("Image trouvé.").then();
-                    message.channel.send(new Discord.MessageAttachment(data)).then().catch();
+                    message.channel.send(new Discord.MessageAttachment(data)).then().catch(err => console.log("Error found: "+ err));
                 });
             }else{
                 message.edit("Aucune image trouvé, veuillez indiquer des coordonnées valides !").then();
