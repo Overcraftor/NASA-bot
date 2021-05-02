@@ -1,7 +1,7 @@
 module.exports = {
     name: "satelliteImage",
     category: "N.A.S.A.",
-    aliases: ["aide", "?"],
+    aliases: ["satImage", "satimg"],
     description: "Permet d'obtenir une photo satellite selon des coordonnées précises.",
     usage: "satelliteImage <latitude> <longitude> [dimensions (default: 0.15)]",
     deleteMessage: true,
