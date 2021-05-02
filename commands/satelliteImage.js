@@ -4,7 +4,7 @@ module.exports = {
     aliases: ["satImage", "satimg"],
     description: "Permet d'obtenir une photo satellite selon des coordonnées précises.",
     usage: "satelliteImage <latitude> <longitude> [dimensions (default: 0.15)]",
-    deleteMessage: true,
+    deleteMessage: false,
     isMp: false,
 
     execute(message, args, client) {
