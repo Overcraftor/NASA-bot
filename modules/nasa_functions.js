@@ -11,15 +11,15 @@ class nasa_functions {
         https.get(url, res =>{
             if(res.statusCode === 200 && res.headers['content-type'] === "image/png"){
                 message.edit("Réponse de l'api, traitement de l'image...").then();
-                let data = '';
+                let data = new Stream();
 
                 res.on('data', chunk => {
-                    data += chunk;
+                    data.push(chunk);
                 });
 
                 res.on('end', () =>{
                     message.edit("Image trouvé.").then();
-                    message.channel.send(new Discord.MessageAttachment(data)).then();
+                    message.channel.send(new Discord.MessageAttachment(data)).then().catch();
                 });
             }else{
                 message.edit("Aucune image trouvé, veuillez indiquer des coordonnées valides !").then();
