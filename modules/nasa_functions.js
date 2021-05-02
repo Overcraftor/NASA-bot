@@ -9,7 +9,7 @@ class nasa_functions {
 
     getImageFromURL = (url, message) => {
         https.get(url, res =>{
-            message.edit("Réponse de l'api, traitement de l'image...");
+            message.edit("Réponse de l'api, traitement de l'image...").catch();
             if(res.statusCode === 200 && res.headers['content-type'] === "image/png"){
                 let img = new Stream();
 
@@ -23,11 +23,11 @@ class nasa_functions {
                     fs.writeFileSync(fileName, img.read());*/
                 });
             }else{
-                message.edit("Aucune image trouvé, veuillez indiquer des coordonnées valides !");
+                message.edit("Aucune image trouvé, veuillez indiquer des coordonnées valides !").catch();
             }
         }).on('error', err =>{
             console.log("Erreur lors de la récupération d'une image: " + err);
-            message.edit("Error lors de la requêtes http, veuillez contacter un administrateur.");
+            message.edit("Error lors de la requêtes http, veuillez contacter un administrateur.").catch();
         });
         return "err";
     }
