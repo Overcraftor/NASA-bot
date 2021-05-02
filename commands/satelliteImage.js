@@ -14,11 +14,11 @@ module.exports = {
             ));
         }
 
-        message.reply("Recherche de l'image via l'API de la NASA...").then(msg =>{
+        message.reply("Recherche de l'image via l'API de la NASA...").then(async msg =>{
             const url = client.nasa.getSatellitURL(args[0], args[1], args[2] || "0.15");
             console.log(url);
 
-            const img = client.nasa.getImageFromURL(url, msg);
+            const img = await client.nasa.getImageFromURL(url, msg);
             if(img !== "err" && img !== undefined){
                 msg.edit("Image trouvé.").then();
             }
