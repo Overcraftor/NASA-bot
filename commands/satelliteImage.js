@@ -14,13 +14,13 @@ module.exports = {
             ));
         }
 
-        message.reply("Recherche de l'image via l'API de la NASA...");
+        const msg = message.reply("Recherche de l'image via l'API de la NASA...");
         const url = client.nasa.getSatellitURL(args[0], args[1], args[2] || "0.15");
         console.log(url);
 
-        const img = client.nasa.getImageFromURL(url, message);
-        if(img !== "err"){
-            message.edit("Image trouvé.").catch();
+        const img = client.nasa.getImageFromURL(url, msg);
+        if(img !== "err" && img !== undefined){
+            msg.edit("Image trouvé.").catch();
         }
     }
 }
