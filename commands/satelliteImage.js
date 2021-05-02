@@ -20,7 +20,7 @@ module.exports = {
 
         const img = client.nasa.getImageFromURL(url, msg);
         if(img !== "err" && img !== undefined){
-            msg.edit("Image trouvé.").catch();
+            msg.edit("Image trouvé.").then();
         }
     }
 }
