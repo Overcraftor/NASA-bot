@@ -32,9 +32,11 @@ module.exports = {
             return;
         }
 
-        const embed = client.newEmbed("info", message.author, client.prefix + cmd.name.toLowerCase())
+        const embed = client.newEmbed("info", message.author, prefix + cmd.name.toLowerCase())
             .addField("Nom: ", cmd.name)
             .addField("Description", cmd.description);
+        if(cmd.usage !== undefined)
+            embed.addField("Usage: ", cmd.usage);
         if(cmd.aliases)
             embed.addField("Alias", cmd.aliases.join(", "));
         message.channel.send(embed);
