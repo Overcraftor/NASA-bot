@@ -7,9 +7,9 @@ class nasa_functions {
         this.api_key = api_key;
     }
 
-    getImageFromURL = (url) => {
+    getImageFromURL = (url, message) => {
         https.get(url, res =>{
-            console.log(res.headers['content-type']);
+            message.edit("Réponse de l'api, traitement de l'image...");
             if(res.statusCode === 200 && res.headers['content-type'] === "image/png"){
                 let img = new Stream();
 
@@ -23,11 +23,13 @@ class nasa_functions {
                     fs.writeFileSync(fileName, img.read());*/
                 });
             }else{
-                return "unvalid image";
+                message.edit("Aucune image trouvé, veuillez indiquer des coordonnées valides !");
             }
         }).on('error', err =>{
-            return "unvalid http";
+            console.log("Erreur lors de la récupération d'une image: " + err);
+            message.edit("Error lors de la requêtes http, veuillez contacter un administrateur.");
         });
+        return "err";
     }
 
     getSatellitURL = (lat, long, dim) => {
