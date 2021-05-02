@@ -3,6 +3,7 @@ const client = new Discord.Client();
 
 client.config = require("./config.json");
 require("./modules/functions")(client);
+require("./modules/nasa_functions")(client);
 require("./modules/events")(client);
 require("./modules/commands")(client);
 

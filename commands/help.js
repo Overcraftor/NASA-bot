@@ -9,12 +9,12 @@ module.exports = {
     execute(message, args, client){
         const prefix = client.config.prefix;
         if(args.length === 0){
-            const embed = client.newEmbed("info", message.author, `\n- Prefix: \`${prefix}\`\n- Commandes disponibles: `)
+            const embed = client.newEmbed("info", message.author, `\n- Prefix: ${prefix}\n- Commandes disponibles: `)
 
             client.categories.forEach((commands, category) =>{
                 let commandsString = "";
                 commands.forEach(cmd => {
-                    commandsString += "\n**" + prefix + cmd.name.toLowerCase() + ":** " + cmd.description;
+                    commandsString += "\n**" + prefix + (cmd.usage || cmd.name.toLowerCase()) + ":** " + cmd.description;
                 });
                 embed.addField(category + ":", commandsString + "\n")
             });
@@ -27,7 +27,7 @@ module.exports = {
         const cmd = client.getCommand(args[0].toLowerCase());
         if(!cmd){
             message.channel.send(
-                client.newEmbed("error", message.author, "Commande inconnue", `Fais ${client.getGuildPrefix(message.guild)}help pour afficher la liste des commandes.`)
+                client.newEmbed("error", message.author, "Commande inconnue", `Fais ${prefix}help pour afficher la liste des commandes.`)
             );
             return;
         }
