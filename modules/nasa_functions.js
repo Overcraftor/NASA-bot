@@ -32,12 +32,8 @@ class nasa_functions {
     }
 
     getSatellitURL = (lat, long, dim) => {
-        return `https://api.nasa.gov/planetary/earth/imagery?lat=${lat}&lon=${long}&dim=${dim}&api_key=3teH85nmdRdzB8472pqirtsjweuwP2j669B1bdhv`;
+        return `https://api.nasa.gov/planetary/earth/imagery?lat=${lat}&lon=${long}&dim=${dim}&api_key=${this.api_key}`;
     }
-
-    /*getSatellitURL = (lat, long, dim, date) => {
-        return `https://api.nasa.gov/planetary/earth/imagery?lat=${lat}&lon=${long}&dim=${dim}&date=${date}&api_key=3teH85nmdRdzB8472pqirtsjweuwP2j669B1bdhv`;
-    }*/
 }
 
 module.exports = client =>{
