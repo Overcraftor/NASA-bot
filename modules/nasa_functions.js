@@ -28,7 +28,7 @@ class nasa_functions {
                 res.on('data', chunk => {
                     data += chunk;
                 }); 
-                console.log("Erreur : " + data.read());
+                console.log("Erreur : " + data);
             }
         }).on('error', err =>{
             console.log("Erreur lors de la récupération d'une image: " + err);
