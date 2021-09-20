@@ -25,7 +25,7 @@ class nasa_functions {
                 message.edit("Aucune image trouvé, veuillez indiquer des coordonnées valides !").then();
                 console.log("Erreur : " + res.err);
                 console.log("Erreur : " + res);
-                console.log("Erreur : " + res.err);
+                console.log("Erreur : " + res.error);
             }
         }).on('error', err =>{
             console.log("Erreur lors de la récupération d'une image: " + err);
