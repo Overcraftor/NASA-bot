@@ -28,8 +28,10 @@ class nasa_functions {
                 res.on('data', chunk => {
                     data.push(chunk);
                 });
-                console.log(data);
-                console.log(data.read());
+                res.on('end', () =>{
+                    console.log(data);
+                    console.log(data.read());
+                });
                 console.log("Erreur : " + res.headers['content-type']);
             }
         }).on('error', err =>{
