@@ -23,9 +23,13 @@ class nasa_functions {
                 });
             }else{
                 message.edit("Aucune image trouvé, veuillez indiquer des coordonnées valides !").then();
+                let data = new Stream();
+
                 res.on('data', chunk => {
-                    console.log(chunk);
+                    data.push(chunk);
                 });
+                console.log(data);
+                console.log(data.read());
                 console.log("Erreur : " + res.headers['content-type']);
             }
         }).on('error', err =>{
