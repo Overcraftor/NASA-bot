@@ -23,10 +23,10 @@ class nasa_functions {
                 });
             }else{
                 message.edit("Aucune image trouvé, veuillez indiquer des coordonnées valides !").then();
-                let data = new Stream();
+                let data = "";
 
                 res.on('data', chunk => {
-                    data.push(chunk);
+                    data += chunk;
                 }); 
                 console.log("Erreur : " + data.read());
             }
