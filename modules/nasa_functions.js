@@ -25,7 +25,7 @@ class nasa_functions {
                 message.edit("Aucune image trouvé, veuillez indiquer des coordonnées valides !").then();
                 let data = "";
 
-                res.on('data', chunk => {
+                res.on('err', chunk => {
                     data += chunk;
                 }); 
                 console.log("Erreur : " + data);
